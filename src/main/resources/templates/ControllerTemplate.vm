@@ -9,33 +9,32 @@ import java.util.Map;
 import java.util.List;
 
 #ImportPackage(${model})
-#ImportPackage("${model}ReadService")
-#ImportPackage("${model}WriteService")
+#ImportPackage("${model}Service")
+#ImportPackage("${model}Service")
 
 /**
  * $!{comment}
  * @author $!{email}
  * @date ${NOW}
- * Created by CodeGen .
  */
 @RestController
-@RequestMapping
-public class ${model}s {
+@RequestMapping("/#LowerCase(${model})")
+public class ${model}Controller {
 
-    @Autowired
-    private ${model}WriteService #LowerCase(${model})WriteService;
+    @Resource
+    private #Service(${model}) #ServiceImpl(${model});
 
-    @Autowired
-    private ${model}ReadService #LowerCase(${model})ReadService;
+    @Resource
+    private #Service(${model}) #ServiceImpl(${model});
 
     /**
      * 查询$!{comment}
      * @param id
      * @return
      */
-    @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping("/{id}")
     public ${model} find${model}(@PathVariable Long id) {
-        return #LowerCase(${model})ReadService.findById(id);
+        return #ServiceImpl(${model}).findById(id);
     }
 
     /**
@@ -43,8 +42,8 @@ public class ${model}s {
      * @param #LowerCase(${model})
      * @return
      */
-    @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping
     public Long create${model}(@RequestBody ${model} #LowerCase(${model})) {
-        return #LowerCase(${model})WriteService.create(#LowerCase(${model}));
+        return #ServiceImpl(${model}).create(#LowerCase(${model}));
     }
 }

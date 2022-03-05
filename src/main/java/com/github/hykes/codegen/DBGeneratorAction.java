@@ -77,7 +77,7 @@ public class DBGeneratorAction extends AnAction implements DumbAware {
         frameWrapper.setActionOperator(frame);
         frameWrapper.setTitle("CodeGen-DB");
         frameWrapper.setSize(800, 550);
-        frameWrapper.setResizable(false);
+        frameWrapper.setResizable(true);
         frameWrapper.show();
     }
 

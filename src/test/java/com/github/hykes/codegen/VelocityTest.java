@@ -20,15 +20,16 @@ public class VelocityTest {
     public void testSplitLowerCase() {
         VelocityEngine velocityEngine = VelocityFactory.getVelocityEngine();
         velocityEngine.loadDirective("com.github.hykes.codegen.directive.LowerCase");
+        velocityEngine.loadDirective("com.github.hykes.codegen.directive.ServiceImpl");
+        velocityEngine.loadDirective("com.github.hykes.codegen.directive.Service");
         velocityEngine.loadDirective("com.github.hykes.codegen.directive.Split");
-        String template = "#Split(\"#LowerCase(${NAME})\" '.')";
+        String template = "#Split(\"#LowerCase(${NAME})\" '.') #Service(${NAME}) #ServiceImpl(${NAME},true)";
         Map<String, Object> map = new HashMap<>();
         map.put("NAME", "HykesIsStrong");
 
         StringWriter writer = new StringWriter();
         velocityEngine.evaluate(new VelocityContext(map), writer, "", template);
-
-        Assert.assertEquals(writer.toString(), "hykes.is.strong");
+        System.out.println(writer.toString());
     }
 
 }

@@ -1,5 +1,6 @@
 
 import org.springframework.stereotype.Repository;
+import java.util.List;
 
 #ImportPackage(${model})
 
@@ -7,23 +8,24 @@ import org.springframework.stereotype.Repository;
  * $!{comment} DAO层
  * @author $!{email}
  * @date ${NOW}
- * Created by CodeGen .
  */
-@Repository
-public class ${model}Dao {
+public interface ${model}Dao {
 
-    /**
-    * 创建对象
-    */
-    public Boolean create(${model} #LowerCase(${model})){
-        return Boolean.TRUE;
-    }
+    int create(${model} #LowerCase(${model}));
 
-    /**
-    * 查询对象
-    */
-    public ${model} findById(Long id){
-        return new ${model}();
-    }
+    int creates(List<${model}> #LowerCase(${model}));
 
+    ${model} findById(Long id);
+
+    List<${model}> findByIds(List<Long> ids);
+
+    int update(${model} #LowerCase(${model}));
+
+    int deleteById(Long id);
+
+    Long count(${model} #LowerCase(${model}));
+
+    List<${model}> paging(PageParam page, ${model} #LowerCase(${model}));
+
+    List<${model}> list(${model} #LowerCase(${model}));
 }

@@ -1,0 +1,52 @@
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
+
+/**
+ * $!{comment} 分页参数
+ * @author $!{email}
+ * @date ${NOW}
+ */
+@Data
+public class PageParam {
+    /**
+     * 当前页索引 must大于0
+     */
+    private Integer pageIndex;
+    /**
+     * 当前页面大小
+     */
+    private Integer pageSize;
+    /**
+     * 计算得出的数据库开始索引
+     */
+    private Integer startIndex;
+
+    public PageParam() {}
+
+    /**
+     * PageParam JSON构造函数
+     *
+     * @param pageIndex
+     * @param pageSize
+     */
+    @JsonCreator
+    public PageParam(@JsonProperty("pageIndex") Integer pageIndex, @JsonProperty("pageSize") Integer pageSize) {
+        this.pageIndex = pageIndex > 0 ? pageIndex : 1;
+        this.pageSize = pageSize > 0 ? pageSize : 10;
+        this.startIndex = (pageIndex - 1) * pageSize;
+    }
+
+    public void setPageIndex(Integer pageIndex) {
+        this.pageIndex = pageIndex > 0 ? pageIndex : 1;
+    }
+
+    public void setPageSize(Integer pageSize) {
+        this.pageSize = pageSize > 0 ? pageSize : 10;
+    }
+
+    public Integer getStartIndex() {
+        return (pageIndex - 1) * pageSize;
+    }
+}

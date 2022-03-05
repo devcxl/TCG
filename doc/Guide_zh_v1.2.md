@@ -62,6 +62,13 @@ codegen 使用**Volecity模板引擎**进行生成，支持使用**原生的指�
 
 * 组合用法
 #Append("#LowerCase('AbcDefGhi')" '$' '%') => $abcDefGhi%
+
+* Service简写
+#Service('ABC') => ABCService
+
+* ServiceImpl简写
+#ServiceImpl('ABC') => aBCServiceImpl
+#ServiceImpl('ABC',true) => ABCServiceImpl
 ```
 
 ### 自定义参数

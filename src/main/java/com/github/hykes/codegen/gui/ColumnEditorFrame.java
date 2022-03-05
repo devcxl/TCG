@@ -35,7 +35,7 @@ public class ColumnEditorFrame extends JFrame implements ActionOperator {
 
     public void newColumnEditorByDb(IdeaContext ideaContext, List<DbTable> dbTables) {
         List<Table> tables = new ArrayList<>();
-        for (DbTable dbTable: dbTables) {
+        for (DbTable dbTable : dbTables) {
             Table table = new Table();
             table.setTableName(dbTable.getName());
 
@@ -66,23 +66,23 @@ public class ColumnEditorFrame extends JFrame implements ActionOperator {
         this.getRootPane().registerKeyboardAction(e -> dispose(), KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_IN_FOCUSED_WINDOW);
     }
 
-    private void init(IdeaContext ideaContext, List<Table> tables){
+    private void init(IdeaContext ideaContext, List<Table> tables) {
         setLayout(new BorderLayout());
         JBTabbedPane tabbedPane = new JBTabbedPane();
 
-        for (Table table: tables) {
+        for (Table table : tables) {
             TablePanel tablePanel = new TablePanel(table);
             tabbedPane.add(tablePanel.getRootComponent(), table.getTableName());
             panels.add(tablePanel);
         }
 
-        List<CodeRoot> codeRoots =  SETTING_MANAGER.getTemplates().getRoots();
+        List<CodeRoot> codeRoots = SETTING_MANAGER.getTemplates().getRoots();
         SelectGroupPanel selectGroupPanel = new SelectGroupPanel(codeRoots, ideaContext.getProject());
         generateAction = it -> {
-            if(selectGroupPanel.hasSelected()) {
+            if (selectGroupPanel.hasSelected()) {
                 List<CodeContext> contexts = new ArrayList<>();
 
-                for (TablePanel panel: panels) {
+                for (TablePanel panel : panels) {
                     String modelName = panel.getModelTextField().getText().trim();
                     String tableName = panel.getTableTextField().getText().trim();
                     String comment = panel.getCommentTextField().getText().trim();
@@ -106,9 +106,12 @@ public class ColumnEditorFrame extends JFrame implements ActionOperator {
     }
 
     @Override
-    public void cancel() { }
+    public void cancel() {
+    }
 
     @Override
-    public boolean valid() { return true; }
+    public boolean valid() {
+        return true;
+    }
 
 }

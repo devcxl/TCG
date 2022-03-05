@@ -30,6 +30,9 @@ public class VelocityUtil {
         VELOCITY_ENGINE.loadDirective("com.github.hykes.codegen.directive.Split");
         VELOCITY_ENGINE.loadDirective("com.github.hykes.codegen.directive.ImportPackage");
         VELOCITY_ENGINE.loadDirective("com.github.hykes.codegen.directive.GetPackage");
+        VELOCITY_ENGINE.loadDirective("com.github.hykes.codegen.directive.Service");
+        VELOCITY_ENGINE.loadDirective("com.github.hykes.codegen.directive.ServiceImpl");
+        VELOCITY_ENGINE.loadDirective("com.github.hykes.codegen.directive.FullClass");
         Thread.currentThread().setContextClassLoader(classLoader);
     }
 

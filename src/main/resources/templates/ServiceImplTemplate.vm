@@ -6,29 +6,28 @@ import java.util.Map;
 import java.util.List;
 
 #ImportPackage(${model})
-#ImportPackage("${model}ReadService")
+#ImportPackage("${model}Service")
 #ImportPackage("${model}Dao")
 
 /**
  * $!{comment}读服务实现类
  * @author $!{email}
  * @date ${NOW}
- * Created by CodeGen .
  */
 @Service
-public class ${model}ReadServiceImpl implements ${model}ReadService {
+public class #ServiceImpl(${model},true) implements #Service(${model}) {
 
-    @Autowired
+    @Resource
     private ${model}Dao #LowerCase(${model})Dao;
 
     @Override
     public ${model} findById(Long id) {
-        try{
-            return #LowerCase(${model})Dao.findById(id);
-        }catch (Exception e){
-            // for example
-            return new ${model}();
-        }
+        return #LowerCase(${model})Dao.findById(id);
+    }
+
+    @Override
+    public Boolean create(${model} #LowerCase(${model})) {
+        return #LowerCase(${model})Dao.create(#LowerCase(${model})) > 0;
     }
 
 }

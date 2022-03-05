@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--
- ~
- ~ @author $!{email}
- ~ @date ${NOW}
- ~ Created by CodeGen .
+mybatis:
+     type-aliases-package: com.kd.test.common.pojo
 -->
-
-<mapper namespace="${model}">
+<mapper namespace="#FullClass(${model})">
     <resultMap id="${model}Map" type="${model}">
         <id property="id" column="id"/>
     #foreach($item in $fields)
@@ -105,7 +102,7 @@
         FROM <include refid="table_name"/>
         <include refid="criteria"/>
         ORDER BY `id` DESC
-        LIMIT #{offset}, #{limit}
+        LIMIT #{startIndex}, #{pageSize}
     </select>
 
     <select id="list" parameterType="map" resultMap="${model}Map">

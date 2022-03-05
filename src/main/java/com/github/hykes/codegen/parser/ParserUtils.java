@@ -53,13 +53,13 @@ public class ParserUtils {
         sqlTypes.put("LONGTEXT", build("String"));
         sqlTypes.put("SET", build("String"));
         // java.sql.Date ?
-        sqlTypes.put("DATE", build("java.util.Date"));
+        sqlTypes.put("DATE", build("java.time.LocalDateTime"));
         // java.sql.Timestamp ?
-        sqlTypes.put("DATETIME", build("java.util.Date"));
+        sqlTypes.put("DATETIME", build("java.time.LocalDateTime"));
         // java.sql.Timestamp ?
-        sqlTypes.put("TIMESTAMP", build("java.util.Date"));
+        sqlTypes.put("TIMESTAMP", build("java.time.LocalDateTime"));
         // java.sql.Time ?
-        sqlTypes.put("TIME", build("java.util.Date"));
+        sqlTypes.put("TIME", build("java.time.LocalTime"));
         sqlTypes.put("DECIMAL", build("java.math.BigDecimal"));
         sqlTypes.put("BINARY", build("Byte[]", "ByteArray"));
         sqlTypes.put("VARBINARY", build("Byte[]", "ByteArray"));

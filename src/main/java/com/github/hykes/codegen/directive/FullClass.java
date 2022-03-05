@@ -11,15 +11,13 @@ import java.io.IOException;
 import java.io.Writer;
 
 /**
- * 获取package路径
- *
- * @author hehaiyangwork@gmail.com
- * @date 2017/12/19
+ * @author PailieXiangLong
  */
-public class GetPackage extends Directive {
+public class FullClass extends Directive {
+
     @Override
     public String getName() {
-        return "GetPackage";
+        return "FullClass";
     }
 
     @Override
@@ -28,12 +26,10 @@ public class GetPackage extends Directive {
     }
 
     @Override
-    public boolean render(InternalContextAdapter context, Writer writer, Node node) throws IOException, ResourceNotFoundException, ParseErrorException, MethodInvocationException {
-        String clazz = (String) node.jjtGetChild(0).value(context);
-        if (context.containsKey(clazz)) {
-            String packagePath = context.get(clazz).toString();
-            packagePath = "" + packagePath;
-            writer.write(packagePath);
+    public boolean render(InternalContextAdapter internalContextAdapter, Writer writer, Node node) throws IOException, ResourceNotFoundException, ParseErrorException, MethodInvocationException {
+        String clazz = (String) node.jjtGetChild(0).value(internalContextAdapter);
+        if (internalContextAdapter.containsKey(clazz)) {
+            writer.write(internalContextAdapter.get(clazz).toString());
             return true;
         }
         return false;

@@ -8,7 +8,6 @@ import java.util.Date;
  * $!{comment}
  * @author $!{email}
  * @date ${NOW}
- * Created by CodeGen .
  */
 @Data
 public class ${model} implements Serializable {
@@ -30,11 +29,11 @@ public class ${model} implements Serializable {
     /**
      * 创建时间
      */
-    private Date createdAt;
+    private LocalDateTime createdAt;
 
     /**
      * 更新时间
      */
-    private Date updatedAt;
+    private LocalDateTime updatedAt;
 
 }

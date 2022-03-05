@@ -1,5 +1,6 @@
 package com.github.hykes.codegen.directive;
 
+import com.github.hykes.codegen.utils.StringUtils;
 import org.apache.velocity.context.InternalContextAdapter;
 import org.apache.velocity.exception.MethodInvocationException;
 import org.apache.velocity.exception.ParseErrorException;
@@ -11,15 +12,14 @@ import java.io.IOException;
 import java.io.Writer;
 
 /**
- * 获取package路径
- *
- * @author hehaiyangwork@gmail.com
- * @date 2017/12/19
+ * @author orange
  */
-public class GetPackage extends Directive {
+public class Service extends Directive {
+    private final static String END = "Service";
+
     @Override
     public String getName() {
-        return "GetPackage";
+        return END;
     }
 
     @Override
@@ -28,14 +28,14 @@ public class GetPackage extends Directive {
     }
 
     @Override
-    public boolean render(InternalContextAdapter context, Writer writer, Node node) throws IOException, ResourceNotFoundException, ParseErrorException, MethodInvocationException {
-        String clazz = (String) node.jjtGetChild(0).value(context);
-        if (context.containsKey(clazz)) {
-            String packagePath = context.get(clazz).toString();
-            packagePath = "" + packagePath;
-            writer.write(packagePath);
+    public boolean render(InternalContextAdapter internalContextAdapter, Writer writer, Node node) throws IOException, ResourceNotFoundException, ParseErrorException, MethodInvocationException {
+        String value = (String) node.jjtGetChild(0).value(internalContextAdapter);
+        if (StringUtils.isBlank(value)) {
+            writer.write(value);
             return true;
         }
+        String result = value + END;
+        writer.write(result);
         return false;
     }
 }

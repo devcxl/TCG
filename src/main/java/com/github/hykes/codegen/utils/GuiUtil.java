@@ -62,9 +62,15 @@ public class GuiUtil {
         params.put("Project", ideaContext.getProject().getName());
 
         final List<CodeGroup> groupList = new ArrayList<>();
+        // 加载设置中配置的模板文件
         SettingManager.getInstance().getTemplates().getRoots().forEach(it -> groupList.addAll(it.getGroups()));
 
-        final List<CodeGroup> genGroups = groupList.stream().filter(it -> groupPathMap.containsKey(it.getId())).sorted(new ComparatorUtil()).collect(Collectors.toList());
+        // 筛选出选中的分组 根据模板优先级排序
+        final List<CodeGroup> genGroups = groupList
+                .stream()
+                .filter(it -> groupPathMap.containsKey(it.getId()))
+                .sorted(new ComparatorUtil())
+                .collect(Collectors.toList());
         ProgressManager.getInstance().run(new Task.Backgroundable(ideaContext.getProject(), "CodeGen Progress ..."){
             @Override
             public void run(@NotNull ProgressIndicator progressIndicator) {

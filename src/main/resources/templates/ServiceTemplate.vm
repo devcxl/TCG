@@ -8,16 +8,20 @@ import java.util.List;
  * $!{comment}读服务接口
  * @author $!{email}
  * @date ${NOW}
- * Created by CodeGen .
  */
-public interface ${model}ReadService {
+public interface #Service(${model}) {
 
     /**
      * 查询$!{comment}
      * @param id
      * @return #LowerCase(${model})
-
      */
     ${model} findById(Long id);
 
+    /**
+     * 创建$!{comment}
+     * @param #LowerCase(${model})
+     * @return Boolean
+     */
+    Boolean create(${model} #LowerCase(${model}));
 }
