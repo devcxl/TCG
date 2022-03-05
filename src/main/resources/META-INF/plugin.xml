@@ -38,13 +38,13 @@
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
         <applicationConfigurable groupId="tools" id="CodeGen.Variables"
-                                 instance="com.github.hykes.codegen.configurable.instance.VariablesConfigurable">
+                                 instance="com.github.devcxl.tcg.configurable.instance.VariablesConfigurable">
             <configurable id="CodeGen.Templates"
-                          instance="com.github.hykes.codegen.configurable.instance.TemplatesConfigurable"/>
+                          instance="com.github.devcxl.tcg.configurable.instance.TemplatesConfigurable"/>
         </applicationConfigurable>
 
         <applicationService
-                serviceImplementation="com.github.hykes.codegen.configurable.SettingManager"/>
+                serviceImplementation="com.github.devcxl.tcg.configurable.SettingManager"/>
 
     </extensions>
 

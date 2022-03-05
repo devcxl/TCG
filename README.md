@@ -1,4 +1,4 @@
-# CodeGen
+# TCG
 
 This plugin helps you to generate specific template code by create table statement or database .
 

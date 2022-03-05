@@ -1,6 +1,6 @@
 <idea-plugin>
     <actions>
-        <action id="CodeGen.DBGenerator" class="com.github.hykes.codegen.DBGeneratorAction" text="CodeGen-DB">
+        <action id="CodeGen.DBGenerator" class="com.github.devcxl.tcg.DBGeneratorAction" text="CodeGen-DB">
             <add-to-group group-id="DatabaseViewPopupMenu" anchor="after" relative-to-action="CopyReference"/>
         </action>
     </actions>

@@ -1,6 +1,6 @@
 buildscript {
     repositories {
-        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
         maven { url "https://plugins.gradle.org/m2/" }
     }
     dependencies {
@@ -13,8 +13,8 @@ plugins {
     id 'org.jetbrains.intellij' version '0.4.21'
 }
 
-group 'me.hehaiyang.codegen'
-version '1.3.2'
+group 'cn.devcxl.tcg'
+version '0.0.1'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -37,7 +37,7 @@ dependencies {
 
 intellij {
     localPath ideaSDKlocalPath
-    pluginName 'CodeGen'
+    pluginName 'TCG'
     sandboxDirectory = project.rootDir.canonicalPath + "/.sandbox"
     plugins = ['java']
 }
